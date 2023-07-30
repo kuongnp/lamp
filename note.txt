@@ -1,0 +1,16 @@
+docker pull redhat/ubi9
+docker run -d --name rhel9 -it --privileged redhat/ubi9 /sbin/init
+docker exec -it rhel9 sh
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/api.conf
+
+sudo nano /etc/apache2/sites-available/api.conf
+
+sudo cp /etc/apache2/sites-available/your_domain_1.conf /etc/apache2/sites-available/your_domain_2.conf
+
+sudo a2ensite your_domain_1.conf
+sudo a2ensite your_domain_2.conf
+
+sudo apache2ctl configtest
+
+sudo chmod -R 755 /var/www/api
