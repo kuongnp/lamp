@@ -1,19 +1,19 @@
-version: "3"
+version: "3.8"
 
 services:
-  web:
+  api:
     build:
       context: './api/docker'
     depends_on:
-      - mariadb
+      - db
     volumes:
       - './api/src:/var/www/api'
     privileged: true  
     ports:
       - '80:80'
     links:
-      - mariadb
-  mariadb:
+      - db
+  db:
     image: "mariadb"
     restart: 'always'
     environment:
@@ -21,6 +21,8 @@ services:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
       MYSQL_USER: "${MYSQL_USER}"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    ports:
+      - '3306:3306'  
 
   adminer:
     image: adminer
