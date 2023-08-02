@@ -91,7 +91,7 @@ ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 =======================
 
-
+https://www.positronx.io/build-secure-php-rest-api-in-laravel-with-sanctum-auth/
 
 
 
